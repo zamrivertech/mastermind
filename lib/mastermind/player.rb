@@ -1,11 +1,22 @@
 # Player Module: define player type to be codemaker or breaker
 module Player
-  def initialize(type)
-    @type = validate_type(type)
+  attr_reader :role
+
+  def initialize(role)
+    @role = setrole(role)
   end
 
-  def validate_type(type)
-    'codemaker' if type == 1 # rubocop:disable Lint/Void
-    'codebreaker'
+  def setrole(type)
+    if type == 1
+      'codemaker'
+    elsif type == 2
+      'codebreaker'
+    else
+      gets.chomp
+    end
+  end
+
+  def role?
+    @role
   end
 end
