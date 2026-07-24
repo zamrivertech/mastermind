@@ -6,7 +6,7 @@ class Interaction
   end
 
   def self.maker_or_breaker
-    puts 'Would you like to be the codemaker(1) or codebreaker(2)?'
-    gets.chomp
+    print 'Would you like to be the codemaker(1) or codebreaker(2)?:'
+    gets.chomp.to_i
   end
 end

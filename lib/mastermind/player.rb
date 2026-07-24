@@ -12,7 +12,7 @@ module Player
     elsif type == 2
       'codebreaker'
     else
-      gets.chomp
+      setrole(Interaction.maker_or_breaker)
     end
   end
 
