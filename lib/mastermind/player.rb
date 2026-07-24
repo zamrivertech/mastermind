@@ -2,15 +2,16 @@
 module Player
   attr_reader :role
 
+  @@roles = %w[codemaker codebreaker] # rubocop:disable Style/ClassVars
   def initialize(role)
     @role = setrole(role)
   end
 
   def setrole(type)
     if type == 1
-      'codemaker'
+      @@roles[0]
     elsif type == 2
-      'codebreaker'
+      @@roles[1]
     else
       setrole(Interaction.maker_or_breaker)
     end
