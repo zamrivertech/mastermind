@@ -1,4 +1,4 @@
-require_relative 'mastermind/display'
+require_relative 'mastermind/interaction'
 require_relative 'mastermind/player'
 require_relative 'mastermind/computer_player'
 require_relative 'mastermind/human_player'

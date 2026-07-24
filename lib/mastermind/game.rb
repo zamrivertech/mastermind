@@ -1,5 +1,5 @@
 # Game Class: Handles Game Flow and Logic
-class Game
-  p ComputerPlayer.new(1)
-  p HumanPlayer.new(2)
+class Game < Interaction
+  intro
+  human_player = HumanPlayer.new(maker_or_breaker)
 end
