@@ -1,7 +1,9 @@
 # Game Class: Handles Game Flow and Logic
 class Game < Interaction
-  intro
-  human_player = HumanPlayer.new(maker_or_breaker)
-  computer_player = ComputerPlayer.new(human_player.role?)
-  announce_roles(human_player, computer_player)
+  #  intro
+  #  human_player = HumanPlayer.new(maker_or_breaker)
+  #  computer_player = ComputerPlayer.new(human_player.role?)
+  #  announce_roles(human_player, computer_player)
+  p Board.color_peg_rows
+  p Board.key_peg_rows
 end
