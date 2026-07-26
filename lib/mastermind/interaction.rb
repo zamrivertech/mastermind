@@ -14,4 +14,23 @@ class Interaction
     system 'clear'
     puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
   end
+
+  def self.display_board(board)
+    puts '======================|====================='
+    board.each_with_index do |item, index|
+      # left is even so color
+      print "|#{item}|" if index.even?
+      # right is odd so key pegs
+      next unless index.odd?
+
+      item.each_with_index do |key, index|
+        print "|#{key}|"
+        next unless index.even?
+
+        puts
+      end
+      puts
+    end
+    puts '======================|====================='
+  end
 end
