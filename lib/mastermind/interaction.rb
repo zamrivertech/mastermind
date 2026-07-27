@@ -16,6 +16,7 @@ class Interaction
   end
 
   def self.display_board(board)
+    puts '        Colors        |       Keys          '
     puts '======================|====================='
     board.each_with_index do |item, index|
       # left is even so color
@@ -23,11 +24,8 @@ class Interaction
       # right is odd so key pegs
       next unless index.odd?
 
-      item.each_with_index do |key, index|
+      item.each do |key|
         print "|#{key}|"
-        next unless index.even?
-
-        puts
       end
       puts
     end
