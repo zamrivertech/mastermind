@@ -15,7 +15,7 @@ class Interaction
     puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
   end
 
-  def self.display_board(board) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+  def self.display_board(board) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity,Metrics/AbcSize
     puts '   Colors       Keys    '
     puts '===========|============'
     board.each_with_index do |item, index|
@@ -45,5 +45,11 @@ class Interaction
     end
     puts
     puts '======================='
+  end
+
+  def self.color_input
+    puts
+    print 'Choose color and position:'
+    gets.chomp
   end
 end

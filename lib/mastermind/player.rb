@@ -21,19 +21,18 @@ module Player
     @role
   end
 
-  # def add_color(role, color, index, board)
-  # if codebreaker?(role)
+  def add_color
+    return unless codebreaker?
 
-  # end
-  # end
-
-  def codebreaker?(player)
-    true if player.role? == @@roles[1] # rubocop:disable Lint/Void
-    false
+    user_choice = Interaction.color_input.split('')
+    Board.add_color(Peg.color(user_choice[0].to_i), 1, user_choice[1].to_i)
   end
 
-  def codemaker?(player)
-    true if player.role? == @@roles[0] # rubocop:disable Lint/Void
-    false
+  def codebreaker?
+    role? == @@roles[1]
+  end
+
+  def codemaker?
+    role? == @@roles[0]
   end
 end
