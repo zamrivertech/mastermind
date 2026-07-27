@@ -1,6 +1,6 @@
 # Board Class: responsible for Mastermind board structure
 class Board
-  @grid = Array.new(12) { Array.new(4) }
+  @grid = Array.new(4) { Array.new(4) }
 
   class << self
     attr_reader :grid

@@ -15,21 +15,23 @@ class Interaction
     puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
   end
 
-  def self.display_board(board) # rubocop:disable Metrics/MethodLength
-    puts '        Colors        |       Keys          '
-    puts '======================|====================='
+  def self.display_board(board) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+    puts '   Colors      Keys    '
+    puts '===========|============'
     board.each_with_index do |item, index|
-      # left is even so color
-      print "|#{item}|" if index.even?
-      # right is odd so key pegs
-      next unless index.odd?
-
-      item.each do |key|
-        print "|#{key}|"
+      if index.even?
+        item.each do |color|
+          print "|#{color.nil? ? 'O' : 'X'}|"
+        end
       end
-      puts
+      if index.odd? # rubocop:disable Style/Next
+        item.each_with_index do |key, index|
+          print "|#{key.nil? ? 'o' : 'x'}|"
+          puts if index == 3
+        end
+      end
     end
-    puts '======================|====================='
+    puts '===========|============'
   end
 
   def self.display_valid_colors(colors)
