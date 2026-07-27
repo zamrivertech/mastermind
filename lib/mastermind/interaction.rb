@@ -16,12 +16,12 @@ class Interaction
   end
 
   def self.display_board(board) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
-    puts '   Colors      Keys    '
+    puts '   Colors       Keys    '
     puts '===========|============'
     board.each_with_index do |item, index|
       if index.even?
         item.each do |color|
-          print "|#{color.nil? ? 'O' : 'X'}|"
+          print "|#{color.nil? ? 'O' : '●'.colorize(color)}|"
         end
       end
       if index.odd? # rubocop:disable Style/Next
@@ -36,13 +36,14 @@ class Interaction
 
   def self.display_valid_colors(colors)
     count = 0
-    print '=========================================='
+    print '======================='
     puts
     colors.each do |color|
       count += 1
-      print "|● - #{count}|".colorize(color)
+      print ' ● '.colorize(color)
+      print " #{count} ".colorize(color)
     end
     puts
-    puts '=========================================='
+    puts '======================='
   end
 end

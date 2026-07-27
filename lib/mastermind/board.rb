@@ -15,4 +15,8 @@ class Board
     # right is odd so key pegs
     @grid.select.with_index { |item, index| item if index.odd? }
   end
+
+  def self.add_color(color, row, index)
+    color_peg_rows[row][index] = color
+  end
 end

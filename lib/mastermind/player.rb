@@ -20,4 +20,20 @@ module Player
   def role?
     @role
   end
+
+  # def add_color(role, color, index, board)
+  # if codebreaker?(role)
+
+  # end
+  # end
+
+  def codebreaker?(player)
+    true if player.role? == @@roles[1] # rubocop:disable Lint/Void
+    false
+  end
+
+  def codemaker?(player)
+    true if player.role? == @@roles[0] # rubocop:disable Lint/Void
+    false
+  end
 end

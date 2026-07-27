@@ -1,6 +1,6 @@
 # Peg Class: responsible for handling key and color peg definition and colors
 class Peg
-  @colors = %i[green purple blue yellow red brown]
+  @colors = %i[green blue yellow red]
   @keys = %i[grey white]
 
   class << self
