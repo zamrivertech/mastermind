@@ -1,6 +1,13 @@
+# Peg Class: responsible for handling key and color peg definition and colors
 class Peg
-  # add color
-  # availible colors
-  # types of pegs
-  # maybe you should read wikihow first
+  @colors = %i[green purple blue yellow red brown]
+  @keys = %i[grey white]
+
+  class << self
+    attr_reader :colors, :keys
+  end
+
+  def self.color(key)
+    @colors[key]
+  end
 end

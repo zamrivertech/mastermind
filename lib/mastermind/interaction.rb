@@ -31,4 +31,16 @@ class Interaction
     end
     puts '======================|====================='
   end
+
+  def self.display_valid_colors(colors)
+    count = 0
+    print '=========================================='
+    puts
+    colors.each do |color|
+      count += 1
+      print "|● - #{count}|".colorize(color)
+    end
+    puts
+    puts '=========================================='
+  end
 end

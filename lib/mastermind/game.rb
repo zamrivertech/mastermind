@@ -4,6 +4,8 @@ class Game < Interaction
   #  human_player = HumanPlayer.new(maker_or_breaker)
   #  computer_player = ComputerPlayer.new(human_player.role?)
   #  announce_roles(human_player, computer_player)
+  # display_board(Board.grid)
+  # puts '●'.colorize(:green)
+  display_valid_colors(Peg.colors)
   display_board(Board.grid)
-  puts '●'.colorize(:green)
 end
