@@ -15,7 +15,7 @@ class Interaction
     puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
   end
 
-  def self.display_board(board)
+  def self.display_board(board) # rubocop:disable Metrics/MethodLength
     puts '        Colors        |       Keys          '
     puts '======================|====================='
     board.each_with_index do |item, index|

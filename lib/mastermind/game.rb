@@ -5,4 +5,5 @@ class Game < Interaction
   #  computer_player = ComputerPlayer.new(human_player.role?)
   #  announce_roles(human_player, computer_player)
   display_board(Board.grid)
+  puts '●'.colorize(:green)
 end
