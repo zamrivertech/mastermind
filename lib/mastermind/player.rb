@@ -25,7 +25,7 @@ module Player
     return unless codebreaker?
 
     user_choice = Interaction.color_input.split('')
-    Board.add_color(Peg.color(user_choice[0].to_i), 1, user_choice[1].to_i)
+    Board.add_color(Peg.color(user_choice[0].to_i - 1), 1, user_choice[1].to_i - 1)
   end
 
   def codebreaker?

@@ -19,4 +19,10 @@ class Board
   def self.add_color(color, row, index)
     color_peg_rows[row][index] = color
   end
+
+  def remain_rows
+  end
+
+  def current_row
+  end
 end
