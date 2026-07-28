@@ -20,9 +20,14 @@ class Board
     color_peg_rows[row][index] = color
   end
 
-  def remain_rows
+  def self.total_color_rows
+    color_peg_rows.count
   end
 
-  def current_row
+  def self.remain_empty_color_rows
+  end
+
+  def self.current_color_row
+    current_row = total_color_rows - 1
   end
 end
