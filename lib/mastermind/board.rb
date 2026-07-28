@@ -10,4 +10,15 @@ class Board
   def add_color(color, row, index)
     @color_board[row][index] = color
   end
+
+  def current_color_row
+    current_row = -1
+    @color_board.each_with_index do |row, index|
+      if row.all?(nil)
+        current_row = index
+        break
+      end
+    end
+    current_row
+  end
 end
