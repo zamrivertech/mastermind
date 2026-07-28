@@ -15,23 +15,30 @@ class Interaction
     puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
   end
 
-  def self.display_board(board) # rubocop:disable Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity,Metrics/AbcSize
-    puts '   Colors       Keys    '
-    puts '===========|============'
-    board.each_with_index do |item, index|
-      if index.even?
-        item.each do |color|
-          print "|#{color.nil? ? 'O' : '●'.colorize(color)}|"
-        end
+  def self.display_board(board) # rubocop:disable Metrics/AbcSize
+    puts '   Colors  '
+    puts '+==========+'
+    count_row = 0
+    board.color_board.each do |item|
+      count_row += 1
+      count_color = 0
+      item.each do |color|
+        count_color += 1
+        print "|#{color.nil? ? count_color.to_s : '●'.colorize(color)}|"
       end
-      if index.odd? # rubocop:disable Style/Next
-        item.each_with_index do |key, index|
-          print "|#{key.nil? ? 'o' : 'x'}|"
-          puts if index == 3
-        end
-      end
+      print "- #{count_row}"
+      puts
     end
-    puts '===========|============'
+    puts '+==========+'
+    puts '    Keys    '
+    puts '+==========+'
+    board.key_board.each do |item|
+      item.each do |color|
+        print "|#{color.nil? ? 'o' : '●'.colorize(color)}|"
+      end
+      puts
+    end
+    puts '+==========+'
   end
 
   def self.display_valid_colors(colors)
