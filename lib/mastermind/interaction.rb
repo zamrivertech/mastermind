@@ -54,8 +54,10 @@ class Interaction
     puts '======================='
   end
 
-  def self.color_input
-    puts
+  def self.color_input(board)
+    system 'clear'
+    display_valid_colors(Peg.colors)
+    display_board(board)
     print 'Choose color and position:'
     gets.chomp
   end
