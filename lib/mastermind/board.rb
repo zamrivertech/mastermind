@@ -14,7 +14,7 @@ class Board
   def current_color_row
     current_row = -1
     @color_board.each_with_index do |row, index|
-      if row.all?(nil)
+      if row.include?(nil)
         current_row = index
         break
       end

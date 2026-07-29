@@ -24,8 +24,11 @@ module Player
   def add_color(board)
     return unless codebreaker?
 
-    user_choice = Interaction.color_input.split('')
-    board.add_color(Peg.color(user_choice[0].to_i - 1), 0, user_choice[1].to_i - 1)
+    while board.current_color_row != -1
+      Interaction.display_board(board)
+      user_choice = Interaction.color_input.split('')
+      board.add_color(Peg.color(user_choice[0].to_i - 1), board.current_color_row, user_choice[1].to_i - 1)
+    end
   end
 
   def codebreaker?
