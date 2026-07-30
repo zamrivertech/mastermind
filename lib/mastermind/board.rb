@@ -11,6 +11,10 @@ class Board
     @color_board[row][index] = color
   end
 
+  def add_key(color, row, index)
+    @key_board[row][index] = color
+  end
+
   def current_color_row
     current_row = -1
     @color_board.each_with_index do |row, index|
@@ -20,6 +24,10 @@ class Board
       end
     end
     current_row
+  end
+
+  def current_key_row
+    current_color_row
   end
 
   def previous_color_row

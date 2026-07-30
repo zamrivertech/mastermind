@@ -10,4 +10,7 @@ class Peg
   def self.color(key)
     @colors[key]
   end
+
+  # white means correct color in wrong position
+  # black means correct color in correct position
 end
