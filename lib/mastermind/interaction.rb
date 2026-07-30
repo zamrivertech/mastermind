@@ -11,7 +11,6 @@ class Interaction
   end
 
   def self.announce_roles(human, computer)
-    system 'clear'
     puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
   end
 
@@ -55,7 +54,6 @@ class Interaction
   end
 
   def self.color_input(board)
-    system 'clear'
     display_valid_colors(Peg.colors)
     display_board(board)
     print 'Choose color and position:'
