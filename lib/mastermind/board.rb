@@ -21,4 +21,8 @@ class Board
     end
     current_row
   end
+
+  def previous_color_row
+    @color_board[current_color_row - 1]
+  end
 end
