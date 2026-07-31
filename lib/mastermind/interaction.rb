@@ -19,29 +19,28 @@ class Interaction
 
   # display the mastermind board (color and key pegs)
   def self.display_board(board) # rubocop:disable Metrics/AbcSize
-    puts '   Colors  '
-    puts '+==========+'
-    count_row = 0
-    board.color_board.each do |item|
-      count_row += 1
-      count_color = 0
-      item.each do |color|
-        count_color += 1
-        print "|#{color.nil? ? count_color.to_s : '●'.colorize(color)}|"
+    puts
+    print '   Colors   -   Keys    '
+    puts
+    print '+==========++==========+'
+    puts
+    board.color_board.each do |color_row|
+      color_row.each_with_index do |color_peg, color_index|
+        print "|#{color_peg.nil? ? (color_index + 1).to_s : '●'.colorize(color_peg)}|"
+        if color_index == 3
+          # output corresponding key with color
+          board.key_board.each do |key_row|
+            key_row.each_with_index do |key_peg, key_index|
+              print "|#{key_peg.nil? ? 'o' : '●'.colorize(key_peg)}|"
+              puts if key_index == 3
+            end
+            break
+          end
+        else
+          print
+        end
       end
-      print "- #{count_row}"
-      puts
     end
-    puts '+==========+'
-    puts '    Keys    '
-    puts '+==========+'
-    board.key_board.each do |item|
-      item.each do |color|
-        print "|#{color.nil? ? 'o' : '●'.colorize(color)}|"
-      end
-      puts
-    end
-    puts '+==========+'
   end
 
   # display valid colors that human code breaker can choose
