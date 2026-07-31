@@ -1,4 +1,4 @@
-# Game Class: Handles Game Flow and Logic
+# handle game flow and logic
 class Game < Interaction
   intro
   human_player = HumanPlayer.new(maker_or_breaker)
