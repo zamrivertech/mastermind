@@ -44,13 +44,13 @@ class Interaction
     puts '+==========+'
   end
 
-  # display valid colors that human code breaker can choose from
+  # display valid colors that human code breaker can choose
   def self.display_valid_colors(colors)
     count = 0
-    colors.each do |color|
+    colors.each_pair do |key, value|
       count += 1
-      print ' ● '.colorize(color)
-      print " #{count} ".colorize(color)
+      print "| ● - #{key} |".colorize(value)
+      puts if count == 4
     end
   end
 

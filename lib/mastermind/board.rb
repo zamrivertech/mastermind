@@ -19,7 +19,7 @@ class Board
   end
 
   # return the index of the current working row
-  def current_color_row
+  def current_color_row_index
     current_row = -1
     @color_board.each_with_index do |row, index|
       if row.include?(nil)

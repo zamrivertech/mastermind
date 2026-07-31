@@ -1,19 +1,18 @@
 # has peg colors and keys
 class Peg
-  @colors = %i[
-    black
-    red
-    green
-    yellow
-    blue
-    magenta
-    cyan
-    white
-  ]
-  @keys = %i[grey white]
+  @colors = {
+    'B' => :black,
+    'W' => :white,
+    'r' => :red,
+    'g' => :green,
+    'y' => :yellow,
+    'b' => :blue,
+    'm' => :magenta,
+    'c' => :cyan
+  }
 
   class << self
-    attr_reader :colors, :keys
+    attr_reader :colors
   end
 
   def self.color(key)

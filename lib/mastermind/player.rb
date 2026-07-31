@@ -21,18 +21,13 @@ module Player
     @role
   end
 
-  def add_color(board, code, computer_player)
+  # add color as human code breaker into board color pegs
+  def add_color(board)
     return unless codebreaker?
 
-    while board.current_color_row != -1
+    while board.current_color_row_index != -1
       user_choice = Interaction.get_peg_input(board).split('')
-      p code
-      board.add_color(Peg.color(user_choice[0].to_i - 1), board.current_color_row, user_choice[1].to_i - 1)
-      computer_player.key_feedback(board, code)
-      if board.previous_color_row == code
-        puts 'You won!'
-        break
-      end
+      board.add_color(Peg.color(user_choice[0]), board.current_color_row_index, user_choice[1].to_i - 1)
     end
   end
 
