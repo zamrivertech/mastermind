@@ -15,7 +15,14 @@ class Board
 
   # add a key feedback on a row on the keyboard board
   def add_key(color, row, index)
-    @key_board[row][index] = color
+    # keyboard breaker is able to add more rows, need to validate input here
+    # too
+    if !@color_board[current_color_row_index].include(nil)
+      puts 'Hello, are you sure?'
+    else
+      p @color_board[current_color_row_index].include(nil)
+      @key_board[row][index] = color
+    end
   end
 
   # return the index of the current working row

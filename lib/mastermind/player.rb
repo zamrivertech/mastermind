@@ -28,6 +28,11 @@ module Player
     while board.current_color_row_index != -1
       user_choice = Interaction.get_peg_input(board).split('')
       board.add_color(Peg.color(user_choice[0]), board.current_color_row_index, user_choice[1].to_i - 1)
+      # if coderbeaker is sure and would like to move on...
+      # ...to next row, confirm yes or no
+      # if yes, close current row, get key peg result...
+      # and move on, if not
+      # delete last added color or delete all, add this options
     end
   end
 
