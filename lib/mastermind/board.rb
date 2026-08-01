@@ -32,7 +32,7 @@ class Board
 
   # return the index of the current key row
   def current_key_row
-    current_color_row
+    current_color_row_index
   end
 
   # return the index of the previous color row

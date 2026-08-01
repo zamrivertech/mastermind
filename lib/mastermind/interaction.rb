@@ -28,7 +28,7 @@ class Interaction
 
             keys_row.each_with_index do |key_peg, key_index|
               print "|#{key_peg.nil? ? 'o' : '●'.colorize(key_peg)}|"
-              puts if key_index == 3
+              puts " - Row #{colors_index + 1}" if key_index == 3
             end
           end
         else
@@ -54,6 +54,8 @@ class Interaction
     display_valid_colors(Peg.colors)
     puts
     display_board(board)
+    puts
+    print "Current Row: #{board.current_color_row_index + 1}"
     puts
     print 'Choose color and position:'
     gets.chomp
