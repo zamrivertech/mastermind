@@ -12,11 +12,6 @@ class Interaction
     gets.chomp.to_i
   end
 
-  # announce who is breaker and maker
-  def self.announce_roles(human, computer)
-    puts "You: #{human.role?.capitalize} || Computer: #{computer.role?.capitalize}"
-  end
-
   # display the mastermind board (color and key pegs)
   def self.display_board(board) # rubocop:disable Metrics/AbcSize
     puts
@@ -55,8 +50,11 @@ class Interaction
 
   # get color and position input from human code breaker to enter in board
   def self.get_peg_input(board)
+    system 'clear'
     display_valid_colors(Peg.colors)
+    puts
     display_board(board)
+    puts
     print 'Choose color and position:'
     gets.chomp
   end
