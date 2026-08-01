@@ -1,6 +1,6 @@
 require 'colorize'
-# handle output and input of text
-class Interaction
+# handle text output
+class Output
   # output game intro
   def self.intro
     puts 'Welcome to MASTERMIND, Fellow Warrior!'
@@ -46,18 +46,5 @@ class Interaction
       print "|#{key} - ●|".colorize(value)
       puts if count == 4
     end
-  end
-
-  # get color and position input from human code breaker to enter in board
-  def self.get_peg_input(board)
-    system 'clear'
-    display_valid_colors(Peg.colors)
-    puts
-    display_board(board)
-    puts
-    print "Current Row: #{board.current_color_row_index + 1}"
-    puts
-    print 'Choose color and position:'
-    gets.chomp
   end
 end
