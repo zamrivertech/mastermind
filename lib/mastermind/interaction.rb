@@ -24,17 +24,18 @@ class Interaction
     puts
     print '+==========++==========+'
     puts
-    board.color_board.each do |color_row|
-      color_row.each_with_index do |color_peg, color_index|
+    board.color_board.each_with_index do |colors_row, colors_index|
+      colors_row.each_with_index do |color_peg, color_index|
         print "|#{color_peg.nil? ? (color_index + 1).to_s : '●'.colorize(color_peg)}|"
         if color_index == 3
           # output corresponding key with color
-          board.key_board.each do |key_row|
-            key_row.each_with_index do |key_peg, key_index|
+          board.key_board.each_with_index do |keys_row, keys_index|
+            next unless keys_index == colors_index
+
+            keys_row.each_with_index do |key_peg, key_index|
               print "|#{key_peg.nil? ? 'o' : '●'.colorize(key_peg)}|"
               puts if key_index == 3
             end
-            break
           end
         else
           print
