@@ -28,7 +28,6 @@ class Interaction
       colors_row.each_with_index do |color_peg, color_index|
         print "|#{color_peg.nil? ? (color_index + 1).to_s : '●'.colorize(color_peg)}|"
         if color_index == 3
-          # output corresponding key with color
           board.key_board.each_with_index do |keys_row, keys_index|
             next unless keys_index == colors_index
 
@@ -49,7 +48,7 @@ class Interaction
     count = 0
     colors.each_pair do |key, value|
       count += 1
-      print "| ● - #{key} |".colorize(value)
+      print "|#{key} - ●|".colorize(value)
       puts if count == 4
     end
   end
