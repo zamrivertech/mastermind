@@ -10,6 +10,7 @@ class Board
 
   # add or try a color on a row on the color board
   def add_color(color, row, index)
+    puts @color_board[row][index]
     @color_board[row][index] = color
   end
 
