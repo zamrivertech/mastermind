@@ -1,12 +1,8 @@
 Tasks
 
-1 - Separate, clean and document all code and do not forget...
-    ...to commit each changes, you may have to rename some stuff
-    
-    Benefit of task 1 is to allow this project to finish faster than 
-    implementing code faster to slow project completion and
-    bugs will be delivered faster than 
+1 - Remove initialize in board class QUICK
 
-2 - After refactor, draw (not code) what is needed to implement...
-    ...a key_feedback method, that displays after user or computer...
-    ...is done with current_row
+2 - Implement computer key_feedback QUICK
+
+3 - Implement switch roles to work in both ways LONGER
+  
