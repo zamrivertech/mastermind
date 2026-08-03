@@ -7,17 +7,17 @@ class Output
   end
 
   # display the mastermind board (color and key pegs)
-  def self.display_board(board) # rubocop:disable Metrics/AbcSize
+  def self.display_board # rubocop:disable Metrics/AbcSize
     puts
     print '   Colors   -   Keys    '
     puts
     print '+==========++==========+'
     puts
-    board.color_board.each_with_index do |colors_row, colors_index|
+    Board.color_board.each_with_index do |colors_row, colors_index|
       colors_row.each_with_index do |color_peg, color_index|
         print "|#{color_peg.nil? ? (color_index + 1).to_s : '●'.colorize(color_peg)}|"
         if color_index == 3
-          board.key_board.each_with_index do |keys_row, keys_index|
+          Board.key_board.each_with_index do |keys_row, keys_index|
             next unless keys_index == colors_index
 
             keys_row.each_with_index do |key_peg, key_index|
@@ -33,16 +33,16 @@ class Output
   end
 
   # display valid colors that human code breaker can choose
-  def self.display_valid_colors(colors)
+  def self.display_valid_colors
     count = 0
-    colors.each_pair do |key, value|
+    Peg.colors.each_pair do |key, value|
       count += 1
       print "|#{key} - ●|".colorize(value)
       puts if count == 4
     end
   end
 
-  def self.last_color_peg_in_row?(board)
-    print 'Final Color For Current Row!'.colorize(:yellow) if board.last_color_peg_in_row?
+  def self.last_color_peg_in_row?
+    print 'Final Color For Current Row!'.colorize(:yellow) if Board.last_color_peg_in_row?
   end
 end

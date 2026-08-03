@@ -13,7 +13,7 @@ module Player
     elsif type == 2
       @@roles[1]
     else
-      setrole(Interaction.maker_or_breaker)
+      setrole(Input.maker_or_breaker)
     end
   end
 
@@ -22,13 +22,13 @@ module Player
   end
 
   # add color as human code breaker into board color pegs
-  def add_color(board)
+  def add_color
     return unless codebreaker?
 
-    while board.current_color_row_index != -1
-      user_choice = Input.get_peg_color(board).split('')
+    while Board.current_color_row_index != -1
+      user_choice = Input.get_peg_color.split('')
 
-      board.add_color(Peg.color(user_choice[0]), board.current_color_row_index, user_choice[1].to_i - 1)
+      Board.add_color(Peg.color(user_choice[0]), Board.current_color_row_index, user_choice[1].to_i - 1)
       # if coderbeaker is sure and would like to move on...
       # ...to next row, confirm yes or no
       # if yes, close current row, get key peg result...
