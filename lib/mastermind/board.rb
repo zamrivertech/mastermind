@@ -48,4 +48,9 @@ class Board
   def previous_color_row
     @color_board[current_color_row - 1]
   end
+
+  # return true if last space in row to add peg
+  def last_color_peg_in_row?
+    true if @color_board[current_color_row_index].count(nil) == 1
+  end
 end

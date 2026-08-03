@@ -6,12 +6,6 @@ class Output
     puts 'Welcome to MASTERMIND, Fellow Warrior!'
   end
 
-  # ask human to choose to be code breaker or maker
-  def self.maker_or_breaker
-    print 'Would you like to be the codemaker(1) or codebreaker(2)?:'
-    gets.chomp.to_i
-  end
-
   # display the mastermind board (color and key pegs)
   def self.display_board(board) # rubocop:disable Metrics/AbcSize
     puts
@@ -46,5 +40,9 @@ class Output
       print "|#{key} - ●|".colorize(value)
       puts if count == 4
     end
+  end
+
+  def self.last_color_peg_in_row?(board)
+    print 'Final Color For Current Row!'.colorize(:yellow) if board.last_color_peg_in_row?
   end
 end

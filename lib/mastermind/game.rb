@@ -1,10 +1,10 @@
 # handle game flow and logic
 class Game
   Output.intro
-  human_player = HumanPlayer.new(Output.maker_or_breaker)
+  human_player = HumanPlayer.new(Input.maker_or_breaker)
   computer_player = ComputerPlayer.new(human_player.role?)
   # i think this code should be private
-  code = computer_player.make_code
+  # code = computer_player.make_code
 
   board = Board.new(4, 4)
   human_player.add_color(board)
