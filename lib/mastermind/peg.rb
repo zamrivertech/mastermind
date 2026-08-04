@@ -19,6 +19,10 @@ class Peg
     @colors[key]
   end
 
+  def self.random_color
+    @colors.to_a.sample[1]
+  end
+
   #
   # white means correct color in wrong position
   # black means correct color in correct position

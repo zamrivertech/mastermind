@@ -10,28 +10,27 @@ class ComputerPlayer
   def make_code
     return unless codemaker?
 
-    [Peg.color(rand(0..3)), Peg.color(rand(0..3)), Peg.color(rand(0..3)), Peg.color(rand(0..3))]
+    [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
-  def key_feedback(code)
-    previous_color_row = Board.previous_color_row
-    previous_color_row_full = Board.previous_color_row_full?
-    return unless previous_color_row_full
-
-    code.each do |code_color|
-      previous_color_row.each do |tried_color|
-        if previous_color_row.include(code_color)
-          if previous_color_row.index(code_color) == code.index(tried_color)
-            # black
-          else
-            # white
+  def key_feedback(code) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+    if Board.previous_color_row_full? # rubocop:disable Style/GuardClause
+      count = 0
+      code.each do |code_color|
+        Board.previous_color_row.each do |tried_color|
+          if Board.previous_color_row.include?(code_color) # rubocop:disable Style/Next
+            p code
+            puts 'HIT'
+            p Board.key_board
+            if Board.previous_color_row.index(code_color) == code.index(tried_color)
+              Board.add_key(:black, Board.previous_color_row_index, count)
+            else
+              Board.add_key(:white, Board.previous_color_row_index, count)
+            end
+            count += 1
           end
         end
       end
     end
-
-    # if color board previous row > 0 and if nil count is zero?
-    # compare previous color row with make code
-    #
   end
 end

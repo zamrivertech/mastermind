@@ -2,7 +2,8 @@ Tasks
 
 1 - Remove initialize in board class QUICK
     DONE
-2 - Implement computer key_feedback QUICK
+2 - Implement computer key_feedback LONGER
+    2.1. Separate key feedback into smaller methods
 
 3 - Implement switch roles to work in both ways LONGER
   

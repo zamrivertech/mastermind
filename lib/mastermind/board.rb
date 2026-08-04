@@ -16,14 +16,9 @@ class Board
 
   # add a key feedback on a row on the keyboard board
   def self.add_key(color, row, index)
-    # keyboard breaker is able to add more rows, need to validate input here
-    # too
-    if !@color_board[current_color_row_index].include(nil)
-      puts 'Hello, are you sure?'
-    else
-      p @color_board[current_color_row_index].include(nil)
-      @key_board[row][index] = color
-    end
+    return unless index >= 0 && index <= 3
+
+    @key_board[row][index] = color
   end
 
   # return the index of the current working row
@@ -53,6 +48,11 @@ class Board
   def self.previous_color_row
     previous_row = @color_board[current_color_row_index - 1]
     previous_row if current_color_row_index >= 0
+  end
+
+  # return previous color row MAYBE IF FULL
+  def self.previous_color_row_index
+    current_color_row_index - 1
   end
 
   # return true if last space in row to add peg
