@@ -13,24 +13,14 @@ class ComputerPlayer
     [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
-  def key_feedback(code) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
-    if Board.previous_color_row_full? # rubocop:disable Style/GuardClause
-      count = 0
-      code.each do |code_color|
-        Board.previous_color_row.each do |tried_color|
-          if Board.previous_color_row.include?(code_color) # rubocop:disable Style/Next
-            p code
-            puts 'HIT'
-            p Board.key_board
-            if Board.previous_color_row.index(code_color) == code.index(tried_color)
-              Board.add_key(:black, Board.previous_color_row_index, count)
-            else
-              Board.add_key(:white, Board.previous_color_row_index, count)
-            end
-            count += 1
-          end
-        end
+  def key_feedback(code)
+    i = 0
+    Board.previous_color_row.each do |tried_color|
+      if code.include?(tried_color) &&
+         Board.previous_color_row.index(tried_color) == code.index(tried_color)
+        Board.add_key(:black, Board.previous_color_row_index, i)
       end
+      i += 1
     end
   end
 end

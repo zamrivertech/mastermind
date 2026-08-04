@@ -18,8 +18,6 @@ class Game
     # Interact only with human depending on role
     # for code maker is human
     code = @computer_player.make_code
-    p code
-    p Board.current_color_row
     while Board.current_color_row != code
       system 'clear'
       p code
@@ -32,6 +30,7 @@ class Game
       Output.last_color_peg_in_row?
       puts
       @human_player.add_color(@computer_player, code)
+      @computer_player.key_feedback(code)
       break if Board.current_color_row == code
     end
   end
