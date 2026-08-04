@@ -40,12 +40,19 @@ class Board
 
   # return the index of the current key row
   def self.current_key_row
-    current_color_row_index
+    @key_board[current_color_row_index]
   end
 
-  # return the index of the previous color row
+  # return true if previous color row is full
+  def self.previous_color_row_full?
+    previous_row = @color_board[current_color_row_index - 1]
+    true if current_color_row_index >= 0 && !previous_row.include?(nil)
+  end
+
+  # return previous color row
   def self.previous_color_row
-    @color_board[current_color_row - 1]
+    previous_row = @color_board[current_color_row_index - 1]
+    previous_row if current_color_row_index >= 0
   end
 
   # return true if last space in row to add peg
