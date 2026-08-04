@@ -1,7 +1,7 @@
 Tasks
 
 1 - Remove initialize in board class QUICK
-
+    DONE
 2 - Implement computer key_feedback QUICK
 
 3 - Implement switch roles to work in both ways LONGER
