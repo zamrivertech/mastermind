@@ -1,15 +1,7 @@
 # handle text input
 class Input
   # get color and position input from human code breaker to enter in board
-  def self.get_peg_color_
-    Output.display_valid_colors
-    puts
-    Output.display_board
-    puts
-    print "Current Row: #{Board.current_color_row_index + 1}"
-    puts
-    Output.last_color_peg_in_row?
-    puts
+  def self.get_peg_color
     print 'Choose color and position:'
     gets.chomp
   end

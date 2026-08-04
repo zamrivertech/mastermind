@@ -33,9 +33,14 @@ class Board
     current_row
   end
 
-  # return the index of the current key row
+  # return the current key row
   def self.current_key_row
     @key_board[current_color_row_index]
+  end
+
+  # return the color key row
+  def self.current_color_row
+    @color_board[current_color_row_index]
   end
 
   # return true if previous color row is full

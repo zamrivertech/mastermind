@@ -10,4 +10,8 @@ require_relative 'mastermind/game'
 
 # Mastermind File: Require all files to run game
 
-Game.new
+Game.start
+Game.set_players
+p Game.human_player
+p Game.computer_player
+Game.session
