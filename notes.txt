@@ -1,12 +1,16 @@
 Tasks
 
-1 - Remove initialize in board class QUICK
+1 - Remove initialize in board class 
     DONE
-2 - Implement computer key_feedback LONGER
+2 - Implement computer key_feedback
     2.1. Write pseudocode first
     You have 2 arrays
     2.2. Separate key feedback into smaller methods
+    DONE
 
+3 - Implement lose game
 
-3 - Implement switch roles to work in both ways LONGER
+4 - Refactor all code before moving to 5
+
+5 - Implement switch roles to work in both ways
   

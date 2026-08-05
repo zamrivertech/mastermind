@@ -64,4 +64,16 @@ class Board
   def self.last_color_peg_in_row?
     true if @color_board[current_color_row_index].count(nil) == 1
   end
+
+  def self.last_color_row?
+    @color_board[current_color_row_index] == @color_board.length - 1
+  end
+
+  def self.last_color_row
+    @color_board[@color_board.length - 1]
+  end
+
+  def self.last_color_row_full?
+    true unless last_color_row.include?(nil)
+  end
 end
