@@ -35,13 +35,11 @@ class Game
       if Board.previous_color_row == code
         puts 'You win'
         break
+      elsif Board.last_color_row_full? &&
+            Board.last_color_row != code
+        puts 'You lost'
+        break
       end
-      next unless Board.last_color_row != code &&
-                  Board.last_color_row? &&
-                  Board.last_color_row_full?
-
-      puts 'You lost'
-      break
     end
   end
 end

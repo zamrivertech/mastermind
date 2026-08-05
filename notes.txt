@@ -9,8 +9,10 @@ Tasks
     DONE
 
 3 - Implement lose game
+    DONE
+    3.1. But need to refactor the win or lose code
 
-4 - Refactor all code before moving to 5
+4 - Refactor all Fucking CODEBASE before moving to 5
 
 5 - Implement switch roles to work in both ways
   

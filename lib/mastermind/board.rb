@@ -1,7 +1,7 @@
 # handles mastermind's board structure for key and peg colors
 class Board
-  @color_board = Array.new(4) { Array.new(4) }
-  @key_board = Array.new(4) { Array.new(4) }
+  @color_board = Array.new(2) { Array.new(4) }
+  @key_board = Array.new(2) { Array.new(4) }
 
   class << self
     attr_reader :color_board, :key_board
@@ -28,8 +28,11 @@ class Board
       if row.include?(nil)
         current_row = index
         break
+      else
+        current_row = @color_board.length - 1
       end
     end
+    p "test #{current_row}"
     current_row
   end
 
