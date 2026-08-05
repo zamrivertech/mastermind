@@ -32,7 +32,6 @@ class Board
         current_row = @color_board.length - 1
       end
     end
-    p "test #{current_row}"
     current_row
   end
 

@@ -13,33 +13,28 @@ class Game
     @computer_player = ComputerPlayer.new(human_player.role)
   end
 
+  def self.win_or_lose(code)
+    stop = false
+    if Board.previous_color_row == code
+      puts 'You win'
+      stop = true
+    elsif Board.last_color_row_full? &&
+          Board.last_color_row != code
+      puts 'You lost'
+      stop = true
+    end
+    stop
+  end
+
   def self.session
-    # Depending on set players
-    # Interact only with human depending on role
-    # for code maker is human
     code = @computer_player.make_code
     while true
-      system 'clear'
       p code
       Output.display_valid_colors
-      puts
       Output.display_board
-      puts
-      print "Current Row: #{Board.current_color_row_index + 1}"
-      puts
-      Output.last_color_peg_in_row?
-      puts
       @human_player.add_color(@computer_player, code)
-      puts Output.display_board
       @computer_player.key_feedback(code)
-      if Board.previous_color_row == code
-        puts 'You win'
-        break
-      elsif Board.last_color_row_full? &&
-            Board.last_color_row != code
-        puts 'You lost'
-        break
-      end
+      break if win_or_lose(code)
     end
   end
 end
