@@ -14,6 +14,7 @@ class Game
   end
 
   def self.win_or_lose(code)
+    Output.display_board
     stop = false
     if Board.previous_color_row == code
       puts 'You win'
@@ -28,11 +29,11 @@ class Game
 
   def self.session
     code = @computer_player.make_code
-    while true
-      p code
+    loop do
       Output.display_valid_colors
       Output.display_board
-      @human_player.add_color(@computer_player, code)
+      p code
+      @human_player.add_color
       @computer_player.key_feedback(code)
       break if win_or_lose(code)
     end

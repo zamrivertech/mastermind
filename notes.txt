@@ -12,9 +12,12 @@ Tasks
     DONE
     3.1. But need to refactor the win or lose code
          and clean p and puts
+    DONE     
 
 4 - Test and check key_feedback
     - All same color
+    - No feedback in current last row
+    - Fix feedback with each with index
 
 5 - Refactor all Fucking CODEBASE before moving to 5
 

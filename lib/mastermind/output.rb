@@ -8,7 +8,7 @@ class Output
   end
 
   # display the mastermind board (color and key pegs)
-  def self.display_board # rubocop:disable Metrics/AbcSize
+  def self.display_board
     puts
     print '   Colors   -   Keys    '
     puts
@@ -36,7 +36,7 @@ class Output
 
   # display valid colors that human code breaker can choose
   def self.display_valid_colors
-    system 'clear'
+    # system 'clear'
     count = 0
     Peg.colors.each_pair do |key, value|
       count += 1
