@@ -11,8 +11,12 @@ Tasks
 3 - Implement lose game
     DONE
     3.1. But need to refactor the win or lose code
+         and clean p and puts
 
-4 - Refactor all Fucking CODEBASE before moving to 5
+4 - Test and check key_feedback
+    - All same color
 
-5 - Implement switch roles to work in both ways
+5 - Refactor all Fucking CODEBASE before moving to 5
+
+6 - Implement switch roles to work in both ways
   
