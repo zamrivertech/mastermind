@@ -14,16 +14,28 @@ Tasks
          and clean p and puts
     DONE     
 
+
 4 - Test and check key_feedback
-    - Fix feedback display in current last row DONE
-    - Something is wrong when you win in last row DONE
 
-    - All same color
-    - Fix feedback with each with index
+----------------------------------------------------------    
+    - Correct white key feedback
 
-    need to match item with index
-    not first item by find index
-    do not use
+    HINT: 
+    in a color row, if you add one color in all pegs
+    and that one color that exist in the one 
+    position in the code, you are not supossed to get
+    a white peg in feedback til black key for correct position
+    like, e.g:
+
+    color row = r1 r2 r3 r4
+    code = g1 b2 r3 r4
+    correct feedback = nil nil B B
+    incorrect = W W B B
+
+    I think you can use counts to help you
+------------------------------------------------------------
+
+
 
     - Maybe need to refactor the code maker code to be
     accessible from a future codemaker class
