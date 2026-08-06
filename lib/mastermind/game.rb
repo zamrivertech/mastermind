@@ -29,12 +29,14 @@ class Game
   def self.session
     code = @computer_player.make_code
     loop do
-      Output.display_valid_colors
       Output.display_board
       p code
       @human_player.add_color
       @computer_player.key_feedback(code)
-      break if win_or_lose(code)
+      if win_or_lose(code)
+        Output.display_board
+        break
+      end
     end
   end
 end

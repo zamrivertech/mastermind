@@ -7,37 +7,32 @@ class Output
     puts
   end
 
-  # display the mastermind board (color and key pegs)
-  def self.display_board
-    puts
-    print '   Colors   -   Keys    '
-    puts
-    print '+==========++==========+'
-    puts
-    Board.color_board.each_with_index do |colors_row, colors_index|
-      colors_row.each_with_index do |color_peg, color_index|
+  # display color rows
+  def self.display_colors_keys
+    count = 0
+    Board.color_board.each_with_index do |color_row, color_row_index|
+      color_row.each_with_index do |color_peg, color_index|
         print "|#{color_peg.nil? ? (color_index + 1).to_s : '●'.colorize(color_peg)}|"
-        if color_index == 3
-          Board.key_board.each_with_index do |keys_row, keys_index|
-            next unless keys_index == colors_index
+        next unless color_index >= 3
 
-            keys_row.each_with_index do |key_peg, key_index|
-              print "|#{key_peg.nil? ? 'o' : '●'.colorize(key_peg)}|"
-              puts " - Row #{colors_index + 1}" if key_index == 3
-            end
-          end
-        else
-          print
-        end
+        display_key_row(color_row_index) unless color_row.include?(nil)
+        print " Row #{count += 1}"
+        puts
       end
     end
-    puts
+  end
+
+  def self.display_key_row(row)
+    Board.key_board[row].each do |key|
+      print "|#{key.nil? ? 'o' : '●'.colorize(key)}|"
+    end
   end
 
   # display valid colors that human code breaker can choose
   def self.display_valid_colors
-    # system 'clear'
+    system 'clear'
     count = 0
+    puts
     Peg.colors.each_pair do |key, value|
       count += 1
       print "|#{key} - ●|".colorize(value)
@@ -54,5 +49,15 @@ class Output
   def self.current_row
     print "Current Row: #{Board.current_color_row_index + 1}"
     puts
+  end
+
+  def self.display_board
+    display_valid_colors
+    puts
+    display_colors_keys
+    puts
+    last_color_peg_in_row
+    puts
+    current_row
   end
 end

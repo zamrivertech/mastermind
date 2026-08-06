@@ -51,6 +51,12 @@ class Board
     true if current_color_row_index >= 0 && !previous_row.include?(nil)
   end
 
+  # return true if previous color row is full
+  def self.current_color_row_full?
+    current_row = @color_board[current_color_row_index]
+    true if current_color_row_index >= 0 && !current_row.include?(nil)
+  end
+
   # return previous color row
   def self.previous_color_row
     previous_row = @color_board[current_color_row_index - 1]

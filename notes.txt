@@ -15,9 +15,14 @@ Tasks
     DONE     
 
 4 - Test and check key_feedback
+    - Fix feedback display in current last row DONE
+    - Something is wrong when you win in last row
     - All same color
-    - Fix feedback in current last row
     - Fix feedback with each with index
+    - The game must know who won, maybe a method
+    in the player class or in game class but maybe
+    an attribute to know who won and who lost in player class
+    not just display it
 
 5 - Refactor all Fucking CODEBASE before moving to 5
 

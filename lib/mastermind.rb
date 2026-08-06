@@ -12,6 +12,4 @@ require_relative 'mastermind/game'
 
 Game.start
 Game.set_players
-p Game.human_player
-p Game.computer_player
 Game.session
