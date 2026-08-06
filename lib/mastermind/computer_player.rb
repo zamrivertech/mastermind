@@ -15,16 +15,34 @@ class ComputerPlayer
 
   # remake this method
   def key_feedback(code)
+    return unless codemaker?
+
     black_feedback(code)
+    white_feedback(code)
   end
 
-  # adds black key peg feedback
+  # add black key peg feedback
   def black_feedback(code)
-    row = Board.current_color_row
-    row_index = Board.current_color_row_index
+    color_row = Board.current_color_row
+    color_row_index = Board.current_color_row_index
     i = 0
     while i < 4
-      Board.add_key(:black, row_index, i) if row[i] == code[i]
+      Board.add_key(:black, color_row_index, i) if color_row[i] == code[i]
+      break if i >= 4
+
+      i += 1
+    end
+  end
+
+  # add white key peg feedback
+  def white_feedback(code)
+    key_row = Board.current_key_row
+    color_row = Board.current_color_row
+    color_row_index = Board.current_color_row_index
+    i = 0
+    while i < 4
+      p key_row
+      Board.add_key(:white, color_row_index, i) if code.include?(color_row[i]) && key_row[i].nil?
       break if i >= 4
 
       i += 1
