@@ -15,7 +15,9 @@ class Game
 
   def self.win_or_lose(code)
     stop = false
-    if Board.previous_color_row == code
+    Output.display_board
+    if Board.previous_color_row == code ||
+       Board.current_color_row == code
       puts 'You win'
       stop = true
     elsif Board.last_color_row_full? &&
@@ -33,10 +35,7 @@ class Game
       p code
       @human_player.add_color
       @computer_player.key_feedback(code)
-      if win_or_lose(code)
-        Output.display_board
-        break
-      end
+      break if win_or_lose(code)
     end
   end
 end
