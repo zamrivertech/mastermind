@@ -16,7 +16,7 @@ Tasks
 
 4 - Test and check key_feedback
     - All same color
-    - No feedback in current last row
+    - Fix feedback in current last row
     - Fix feedback with each with index
 
 5 - Refactor all Fucking CODEBASE before moving to 5

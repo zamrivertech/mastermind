@@ -68,7 +68,7 @@ class Board
   end
 
   def self.last_color_row?
-    @color_board[current_color_row_index] == @color_board.length - 1
+    current_color_row_index == @color_board.length - 1
   end
 
   def self.last_color_row

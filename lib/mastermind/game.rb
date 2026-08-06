@@ -14,7 +14,6 @@ class Game
   end
 
   def self.win_or_lose(code)
-    Output.display_board
     stop = false
     if Board.previous_color_row == code
       puts 'You win'

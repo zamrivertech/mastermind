@@ -13,10 +13,10 @@ class ComputerPlayer
     [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
-  def key_feedback(code) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize,Metrics/CyclomaticComplexity
+  def key_feedback(code) # rubocop:disable Metrics/MethodLength
     i = 0
-    row = Board.last_color_row? ? Board.current_color_row : Board.previous_color_row
-    row_index = Board.last_color_row? ? Board.current_color_row_index : Board.previous_color_row_index
+    row = Board.current_color_row
+    row_index = Board.current_color_row_index
     row.each do |tried_color|
       if code.include?(tried_color) &&
          row.index(tried_color) == code.index(tried_color)
