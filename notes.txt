@@ -16,9 +16,18 @@ Tasks
 
 4 - Test and check key_feedback
     - Fix feedback display in current last row DONE
-    - Something is wrong when you win in last row
+    - Something is wrong when you win in last row DONE
+
     - All same color
     - Fix feedback with each with index
+
+    need to match item with index
+    not first item by find index
+    do not use
+
+    - Maybe need to refactor the code maker code to be
+    accessible from a future codemaker class
+
     - The game must know who won, maybe a method
     in the player class or in game class but maybe
     an attribute to know who won and who lost in player class

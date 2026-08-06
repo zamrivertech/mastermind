@@ -1,7 +1,7 @@
 # handles mastermind's board structure for key and peg colors
 class Board
-  @color_board = Array.new(2) { Array.new(4) }
-  @key_board = Array.new(2) { Array.new(4) }
+  @color_board = Array.new(12) { Array.new(4) }
+  @key_board = Array.new(12) { Array.new(4) }
 
   class << self
     attr_reader :color_board, :key_board

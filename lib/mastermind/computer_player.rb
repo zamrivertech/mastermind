@@ -13,19 +13,20 @@ class ComputerPlayer
     [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
-  def key_feedback(code) # rubocop:disable Metrics/MethodLength
-    i = 0
+  # remake this method
+  def key_feedback(code)
+    black_feedback(code)
+  end
+
+  # adds black key peg feedback
+  def black_feedback(code)
     row = Board.current_color_row
     row_index = Board.current_color_row_index
-    row.each do |tried_color|
-      if code.include?(tried_color) &&
-         row.index(tried_color) == code.index(tried_color)
-        Board.add_key(:black, row_index, i)
-      end
-      if code.include?(tried_color) &&
-         row.index(tried_color) != code.index(tried_color)
-        Board.add_key(:white, row_index, i)
-      end
+    i = 0
+    while i < 4
+      Board.add_key(:black, row_index, i) if row[i] == code[i]
+      break if i >= 4
+
       i += 1
     end
   end
