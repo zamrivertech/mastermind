@@ -1,7 +1,7 @@
 # handles mastermind's board structure for key and peg colors
 class Board
-  @color_board = Array.new(12) { Array.new(4) }
-  @key_board = Array.new(12) { Array.new(4) }
+  @color_board = Array.new(6) { Array.new(4) }
+  @key_board = Array.new(6) { Array.new(4) }
 
   class << self
     attr_reader :color_board, :key_board
@@ -63,7 +63,13 @@ class Board
     previous_row if current_color_row_index >= 0
   end
 
-  # return previous color row MAYBE IF FULL
+  # return previous key row
+  def self.previous_key_row
+    previous_row = @key_board[current_color_row_index - 1]
+    previous_row if current_color_row_index >= 0
+  end
+
+  # return previous color row
   def self.previous_color_row_index
     current_color_row_index - 1
   end

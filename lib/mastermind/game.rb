@@ -34,7 +34,7 @@ class Game
       Output.display_board
       p code
       @human_player.add_color
-      @computer_player.key_feedback(code)
+      @computer_player.black_feedback(code)
       break if win_or_lose(code)
     end
   end
