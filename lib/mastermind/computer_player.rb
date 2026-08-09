@@ -17,10 +17,12 @@ class ComputerPlayer
   # add black key peg feedback
   def black_feedback(code)
     remain_code = code.dup
-    Board.previous_color_row.each_with_index do |tried_color, tried_color_index|
+    row = Board.last_color_row_full? ? Board.current_color_row : Board.previous_color_row
+    row_index = Board.last_color_row_full? ? Board.current_color_row_index : Board.previous_color_row_index
+    row.each_with_index do |tried_color, tried_color_index|
       next unless tried_color == code[tried_color_index]
 
-      Board.add_key(:black, Board.previous_color_row_index, tried_color_index)
+      Board.add_key(:black, row_index, tried_color_index)
       remain_code.delete_at(code.index(tried_color))
     end
     white_feedback(code, remain_code)
@@ -28,10 +30,12 @@ class ComputerPlayer
 
   # add white key peg feedback
   def white_feedback(code, remain_code)
-    Board.previous_color_row.each_with_index do |tried_color, tried_color_index|
+    row = Board.last_color_row_full? ? Board.current_color_row : Board.previous_color_row
+    row_index = Board.last_color_row_full? ? Board.current_color_row_index : Board.previous_color_row_index
+    row.each_with_index do |tried_color, tried_color_index|
       next unless remain_code.include?(tried_color) && Board.previous_key_row[tried_color_index].nil?
 
-      Board.add_key(:white, Board.previous_color_row_index, tried_color_index)
+      Board.add_key(:white, row_index, tried_color_index)
       remain_code.delete_at(code.index(tried_color))
     end
   end
