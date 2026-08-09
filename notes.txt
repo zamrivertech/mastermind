@@ -35,6 +35,11 @@ Tasks
     I think you can use counts to help you
 ------------------------------------------------------------
 
+DONE
+
+BUT NOW FIX CURRENT AND PREVIOUS KEY ROW display
+IF LAST ROW IS WRONG TOO
+
 
 
     - Maybe need to refactor the code maker code to be

@@ -2,7 +2,6 @@
 class ComputerPlayer
   include Player
   # check human role and be the opposite
-  attr_reader :secret_code
 
   def initialize(human_role)
     @role = human_role == @@roles[0] ? @@roles[1] : @@roles[0]
@@ -24,14 +23,11 @@ class ComputerPlayer
       Board.add_key(:black, Board.previous_color_row_index, tried_color_index)
       remain_code.delete_at(code.index(tried_color))
     end
-    # doing this to pass remaning unchecked colors to white feedback
     white_feedback(code, remain_code)
   end
 
   # add white key peg feedback
   def white_feedback(code, remain_code)
-    p remain_code
-    p Board.key_board
     Board.previous_color_row.each_with_index do |tried_color, tried_color_index|
       next unless remain_code.include?(tried_color) && Board.previous_key_row[tried_color_index].nil?
 
