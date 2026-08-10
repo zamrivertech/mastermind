@@ -30,11 +30,12 @@ class Game
 
   def self.session
     code = @computer_player.make_code
+    @computer_player.get_session_code(code)
+    p @computer_player.code
     loop do
       Output.display_board
-      p code
       @human_player.add_color
-      @computer_player.black_feedback(code)
+      @computer_player.black_feedback
       break if win_or_lose(code)
     end
   end
