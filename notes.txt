@@ -1,5 +1,5 @@
-You need to check remain code in feedback to check if
-its being spliced
-maybe its a previous and/or current row problem
-because you need to splice and pass to white the spliced
-to add the white feedbacks
+Fix current row and previous row
+to fix feedback shuffle or to order til full
+
+Play mastermind to have an idea of how these things
+word
