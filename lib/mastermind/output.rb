@@ -30,7 +30,7 @@ class Output
 
   # display valid colors that human code breaker can choose
   def self.display_valid_colors
-    # system 'clear'
+    system 'clear'
     count = 0
     puts
     Peg.colors.each_pair do |key, value|

@@ -1,8 +1,6 @@
 # handles being the code maker or breaker opposite as human player
 class ComputerPlayer
   include Player
-  # get secret code by computer
-  attr_reader :code
 
   def initialize(human_role)
     @role = human_role == @@roles[0] ? @@roles[1] : @@roles[0]
@@ -15,38 +13,33 @@ class ComputerPlayer
     [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
-  def get_session_code(code)
-    @code = code
+  def feedback(code)
+    white_feedback(black_feedback(code)) if Board.previous_color_row_full?
   end
 
   # add black key peg feedback
-  def black_feedback
+  def black_feedback(code)
     remain_code = code.dup
     row = Board.last_color_row_full? ? Board.current_color_row : Board.previous_color_row
     row_index = Board.last_color_row_full? ? Board.current_color_row_index : Board.previous_color_row_index
     row.each_with_index do |tried_color, tried_color_index|
-      p row
-      p tried_color
-      p @code[tried_color_index]
-      p tried_color == @code[tried_color_index]
-      if tried_color == @code[tried_color_index] # rubocop:disable Style/Next
-        Board.add_key(:black, row_index, tried_color_index)
-        remain_code.slice!(@code.index(tried_color), 1)
-        p "remained code for black #{remain_code}"
+      if tried_color == code[tried_color_index]
+        Board.add_key(:black, row_index)
+        remain_code.slice!(remain_code.index(tried_color), 1)
       end
     end
+    remain_code
   end
 
   # add white key peg feedback
-  def white_feedback
-    p "remained code for white #{remain_code}"
+  def white_feedback(remain_code)
     row = Board.last_color_row_full? ? Board.current_color_row : Board.previous_color_row
     row_index = Board.last_color_row_full? ? Board.current_color_row_index : Board.previous_color_row_index
     row.each_with_index do |tried_color, tried_color_index|
-      next unless remain_code.include?(tried_color) && Board.previous_key_row[tried_color_index].nil?
-
-      Board.add_key(:white, row_index, tried_color_index)
-      remain_code.delete_at(@code.index(tried_color))
+      if remain_code.include?(tried_color) && Board.previous_key_row[tried_color_index].nil?
+        Board.add_key(:white, row_index)
+        remain_code.slice!(remain_code.index(tried_color), 1)
+      end
     end
   end
 

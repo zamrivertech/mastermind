@@ -1,7 +1,7 @@
 # handles mastermind's board structure for key and peg colors
 class Board
-  @color_board = Array.new(3) { Array.new(4) }
-  @key_board = Array.new(3) { Array.new(4) }
+  @color_board = Array.new(12) { Array.new(4) }
+  @key_board = Array.new(12) { Array.new(4) }
 
   class << self
     attr_reader :color_board, :key_board
@@ -15,10 +15,9 @@ class Board
   end
 
   # add a key feedback on a row on the keyboard board
-  def self.add_key(color, row, index)
-    return unless index >= 0 && index <= 3
-
-    @key_board[row][index] = color
+  def self.add_key(color, row)
+    @key_board[row].unshift(color)
+    @key_board[row].slice!(@key_board[row].index(nil), 1) if @key_board[row].include?(nil)
   end
 
   # return the index of the current working row
