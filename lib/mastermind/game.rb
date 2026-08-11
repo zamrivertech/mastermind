@@ -32,8 +32,11 @@ class Game
     code = @computer_player.make_code
     loop do
       Output.display_board
+      p code
       @human_player.add_color
       @computer_player.feedback(code)
+      p Board.current_color_row_index
+      Board.shuffle_keys if Board.current_color_row_full?
       break if win_or_lose(code)
     end
   end
