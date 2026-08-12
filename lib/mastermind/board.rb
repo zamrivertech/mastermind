@@ -1,7 +1,7 @@
 # handles mastermind's board structure for key and peg colors
 class Board
-  @color_board = Array.new(3) { Array.new(4) }
-  @key_board = Array.new(3) { Array.new(4) }
+  @color_board = Array.new(12) { Array.new(4) }
+  @key_board = Array.new(12) { Array.new(4) }
 
   class << self
     attr_reader :color_board, :key_board
@@ -22,7 +22,7 @@ class Board
   # return the index of the current working row
   def self.current_color_row_index
     current_row_index = 0
-    while true
+    while true # rubocop:disable Style/InfiniteLoop
       current_row_index += 1 unless @color_board[current_row_index].include?(nil)
       break if current_row_index == @color_board.length - 1
       break if @color_board[current_row_index].include?(nil)
@@ -84,9 +84,5 @@ class Board
 
   def self.last_color_row_full?
     true unless last_color_row.include?(nil)
-  end
-
-  def self.shuffle_keys
-    current_key_row.shuffle!
   end
 end
