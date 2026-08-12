@@ -22,8 +22,11 @@ class Board
   # return the index of the current working row
   def self.current_color_row_index
     current_row_index = 0
-    current_row_index += 1 unless @color_board[current_row_index].include?(nil)
-    p @color_board[current_row_index]
+    while true
+      current_row_index += 1 unless @color_board[current_row_index].include?(nil)
+      break if current_row_index == @color_board.length - 1
+      break if @color_board[current_row_index].include?(nil)
+    end
     current_row_index
   end
 
