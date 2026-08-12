@@ -43,4 +43,12 @@ class ComputerPlayer
       end
     end
   end
+
+  def shuffle_keys
+    return unless Board.previous_key_row.count(nil) < 4
+
+    # shuffle it once, not each time you add a color
+    # to a psoition in a color row
+    Board.previous_key_row.shuffle!
+  end
 end

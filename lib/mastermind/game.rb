@@ -32,7 +32,6 @@ class Game
     code = @computer_player.make_code
     loop do
       Output.display_board
-      p code
       @human_player.add_color
       @computer_player.feedback(code)
       break if win_or_lose(code)
