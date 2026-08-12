@@ -22,15 +22,8 @@ class Board
   # return the index of the current working row
   def self.current_color_row_index
     current_row_index = 0
-    unless @color_board[current_row_index].include?(nil)
-      answer = Input.confirm_row
-      p answer == 'y'
-      if answer == 'y'
-        current_row_index += 1
-      elsif answer == 'n'
-        Input.add_color
-      end
-    end
+    current_row_index += 1 unless @color_board[current_row_index].include?(nil)
+    p @color_board[current_row_index]
     current_row_index
   end
 

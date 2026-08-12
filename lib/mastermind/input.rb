@@ -11,9 +11,4 @@ class Input
     print 'Would you like to be the codemaker(1) or codebreaker(2)?:'
     gets.chomp.to_i
   end
-
-  def self.confirm_row
-    print 'Confirm row (y/n)?'
-    gets.chomp
-  end
 end
