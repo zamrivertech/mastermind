@@ -30,7 +30,7 @@ class Output
 
   # display valid colors that human code breaker can choose
   def self.display_valid_colors
-    system 'clear'
+    # system 'clear'
     count = 0
     puts
     Peg.colors.each_pair do |key, value|
@@ -41,13 +41,8 @@ class Output
     puts
   end
 
-  def self.last_color_peg_in_row
-    print 'Final Color For Current Row!'.colorize(:yellow) if Board.last_color_peg_in_row?
-    puts
-  end
-
   def self.current_row
-    print "Current Row: #{Board.current_color_row_index + 1}"
+    print "Current Row: #{Board.row_index + 1}"
     puts
   end
 
@@ -55,8 +50,6 @@ class Output
     display_valid_colors
     puts
     display_colors_keys
-    puts
-    last_color_peg_in_row
     puts
     current_row
   end

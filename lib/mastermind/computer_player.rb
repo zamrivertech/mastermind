@@ -4,6 +4,15 @@ class ComputerPlayer
 
   def initialize(human_role)
     @role = human_role == @@roles[0] ? @@roles[1] : @@roles[0]
+    shuffle_keyboard_rows
+  end
+
+  def shuffle_keyboard_rows
+    count = 0
+    while count < Board.key_board.length - 1
+      Board.key_board[count].shuffle!
+      count += 1
+    end
   end
 
   # create secret code if code maker
@@ -20,10 +29,10 @@ class ComputerPlayer
   # add black key peg feedback
   def black_feedback(code)
     remain_code = code.dup
-    row = Board.current_color_row_full? ? Board.current_color_row : Board.previous_color_row
-    row_index = Board.current_color_row_full? ? Board.current_color_row_index : Board.previous_color_row_index
+    row = Board.current_color_row
+    row_index = Board.row_index
     row.each_with_index do |tried_color, tried_color_index|
-      if tried_color == code[tried_color_index]
+      if tried_color == code[tried_color_index] && tried_color_index == code.index(tried_color)
         Board.add_key(:black, row_index, tried_color_index)
         remain_code.slice!(remain_code.index(tried_color), 1)
       end
@@ -32,23 +41,14 @@ class ComputerPlayer
   end
 
   # add white key peg feedback
-  def white_feedback(remain_code) # rubocop:disable Metrics/AbcSize
-    row = Board.current_color_row_full? ? Board.current_color_row : Board.previous_color_row
-    row_index = Board.current_color_row_full? ? Board.current_color_row_index : Board.previous_color_row_index
-    key_row = Board.current_color_row_full? ? Board.current_key_row : Board.previous_key_row
+  def white_feedback(remain_code)
+    row = Board.current_color_row
+    row_index = Board.row_index
     row.each_with_index do |tried_color, tried_color_index|
-      if remain_code.include?(tried_color) && key_row[tried_color_index].nil?
+      if remain_code.include?(tried_color)
         Board.add_key(:white, row_index, tried_color_index)
         remain_code.slice!(remain_code.index(tried_color), 1)
       end
     end
-  end
-
-  def shuffle_keys
-    return unless Board.previous_key_row.count(nil) < 4
-
-    # shuffle it once, not each time you add a color
-    # to a psoition in a color row
-    Board.previous_key_row.shuffle!
   end
 end

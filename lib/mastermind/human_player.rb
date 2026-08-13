@@ -7,6 +7,6 @@ class HumanPlayer
     return unless codebreaker?
 
     user_choice = Input.color_position.split('')
-    Board.add_color(Peg.color(user_choice[0]), Board.current_color_row_index, user_choice[1].to_i - 1)
+    Board.add_color(Peg.color(user_choice[0]), Board.row_index, user_choice[1].to_i - 1)
   end
 end

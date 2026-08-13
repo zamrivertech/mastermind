@@ -1,8 +1,4 @@
-Fix current row and previous row
-to fix feedback shuffle or to order til full
-
-Play mastermind to have an idea of how these things
-word
-
-Did nto fix current color row
-Need to refactor this 
+Check feedback
+and refactor thsi working logic of next row
+    and win or lose
+    just for the code not to be clumped up

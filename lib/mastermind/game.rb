@@ -16,12 +16,10 @@ class Game
   def self.win_or_lose(code)
     stop = false
     Output.display_board
-    if Board.previous_color_row == code ||
-       Board.current_color_row == code
+    if Board.current_color_row == code
       puts 'You win'
       stop = true
-    elsif Board.last_color_row_full? &&
-          Board.last_color_row != code
+    elsif Board.last_color_row_full? && Board.last_color_row != code
       puts 'You lost'
       stop = true
     end
@@ -32,9 +30,14 @@ class Game
     code = @computer_player.make_code
     loop do
       Output.display_board
+      p code
       @human_player.add_color
       @computer_player.feedback(code)
-      break if win_or_lose(code)
+      break if Board.current_color_row_full? && win_or_lose(code)
+
+      Board.next_row if Board.current_color_row_full? && (Input.confirm_row? == 'y')
+
+      # move to next row
     end
   end
 end
