@@ -16,8 +16,8 @@ class Board
   end
 
   # add a key feedback on a row on the keyboard board
-  def self.add_key(color, row, position)
-    @key_board[row][@key_board[row].index(position).to_i] = color
+  def self.add_key(color, row, index)
+    @key_board[row][index] = color
   end
 
   def self.next_row
@@ -25,6 +25,10 @@ class Board
   end
 
   def self.current_color_row
+    @color_board[@row_index]
+  end
+
+  def self.current_key_row
     @color_board[@row_index]
   end
 

@@ -13,7 +13,8 @@ class Input
   end
 
   def self.confirm_row?
-    print 'Confirm Row?!'.colorize(:yellow)
+    puts
+    print 'Confirm colors? (y/n):'.colorize(:yellow)
     gets.chomp
   end
 end

@@ -1,4 +1,10 @@
-Check feedback
-and refactor thsi working logic of next row
-    and win or lose
-    just for the code not to be clumped up
+okay 
+
+i have not fully tested but key feedback and
+                            shuffle is genuinly
+
+Now you test and play the game without seeing the
+code using a strategy
+
+Then take a look at each file of code to seeing
+    what is refactorable

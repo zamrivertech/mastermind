@@ -23,6 +23,8 @@ class ComputerPlayer
   end
 
   def feedback(code)
+    return unless Board.current_color_row_full?
+
     white_feedback(black_feedback(code))
   end
 

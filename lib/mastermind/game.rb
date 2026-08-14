@@ -32,10 +32,13 @@ class Game
       Output.display_board
       p code
       @human_player.add_color
-      @computer_player.feedback(code)
       break if Board.current_color_row_full? && win_or_lose(code)
 
-      Board.next_row if Board.current_color_row_full? && (Input.confirm_row? == 'y')
+      next unless Board.current_color_row_full? && (Input.confirm_row? == 'y')
+
+      @computer_player.feedback(code)
+      Board.current_key_row.shuffle!
+      Board.next_row
 
       # move to next row
     end
