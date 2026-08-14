@@ -35,7 +35,7 @@ class ComputerPlayer
     row_index = Board.row_index
     row.each_with_index do |tried_color, tried_color_index|
       if tried_color == code[tried_color_index] && tried_color_index == code.index(tried_color)
-        Board.add_key(:black, row_index, tried_color_index)
+        Board.add_key(:black, row_index)
         remain_code.slice!(remain_code.index(tried_color), 1)
       end
     end
@@ -46,9 +46,9 @@ class ComputerPlayer
   def white_feedback(remain_code)
     row = Board.current_color_row
     row_index = Board.row_index
-    row.each_with_index do |tried_color, tried_color_index|
+    row.each do |tried_color|
       if remain_code.include?(tried_color)
-        Board.add_key(:white, row_index, tried_color_index)
+        Board.add_key(:white, row_index)
         remain_code.slice!(remain_code.index(tried_color), 1)
       end
     end
