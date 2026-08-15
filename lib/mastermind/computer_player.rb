@@ -2,17 +2,9 @@
 class ComputerPlayer
   include Player
 
+  # set opposite role by human role choice
   def initialize(human_role)
     @role = human_role == @@roles[0] ? @@roles[1] : @@roles[0]
-    shuffle_keyboard_rows
-  end
-
-  def shuffle_keyboard_rows
-    count = 0
-    while count < Board.key_board.length - 1
-      Board.key_board[count].shuffle!
-      count += 1
-    end
   end
 
   # create secret code if code maker
@@ -22,8 +14,9 @@ class ComputerPlayer
     [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
+  # add key feedback in key row if current color row is full
   def feedback(code)
-    return unless Board.current_color_row_full?
+    return unless codemaker? && Board.current_color_row_full?
 
     white_feedback(black_feedback(code))
   end

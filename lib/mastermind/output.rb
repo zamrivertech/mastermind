@@ -22,6 +22,7 @@ class Output
     end
   end
 
+  # display key feedback rows
   def self.display_key_row(row)
     Board.key_board[row].each do |key|
       print "|#{key.nil? ? 'o' : '●'.colorize(key)}|"
@@ -30,7 +31,6 @@ class Output
 
   # display valid colors that human code breaker can choose
   def self.display_valid_colors
-    # system 'clear'
     count = 0
     puts
     Peg.colors.each_pair do |key, value|
@@ -41,11 +41,20 @@ class Output
     puts
   end
 
+  # display current acting row
   def self.current_row
     print "Current Row: #{Board.row_index + 1}"
     puts
   end
 
+  # display both player roles
+  def self.display_roles(computer, human)
+    system 'clear'
+    print "Computer: #{computer.role} | You: #{human.role}"
+    puts
+  end
+
+  # display valid colors, colors_keys and current row
   def self.display_board
     display_valid_colors
     puts

@@ -6,12 +6,13 @@ class Input
     gets.chomp
   end
 
-  # ask human code to choose to be code breaker or maker
+  # ask human to choose to be code breaker or maker
   def self.maker_or_breaker
     print 'Would you like to be the codemaker(1) or codebreaker(2)?:'
     gets.chomp.to_i
   end
 
+  # get row confirm from human code breaker
   def self.confirm_row?
     puts
     print 'Confirm colors? (y/n):'.colorize(:yellow)
