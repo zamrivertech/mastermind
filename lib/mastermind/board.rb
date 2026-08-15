@@ -19,9 +19,8 @@ class Board
   end
 
   # add a key feedback on a row on the keyboard board
-  def self.add_key(color, row)
-    @key_board[row].unshift(color)
-    @key_board[row].pop
+  def self.add_key(color, row, index)
+    @key_board[row][index] = color
   end
 
   # move to next row

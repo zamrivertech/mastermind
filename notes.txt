@@ -1,5 +1,2 @@
-Need to fix feedback
-problem might be in unshift and pop key
-
-then after fix, refactor game to allow
-human and computer to either be code maker or breaker
+need to fix feedback
+problem is with the algorithm

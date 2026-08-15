@@ -11,6 +11,7 @@ class ComputerPlayer
   def make_code
     return unless codemaker?
 
+    # %i[white black red white]
     [Peg.random_color, Peg.random_color, Peg.random_color, Peg.random_color]
   end
 
@@ -27,10 +28,14 @@ class ComputerPlayer
     row = Board.current_color_row
     row_index = Board.row_index
     row.each_with_index do |tried_color, tried_color_index|
-      if tried_color == code[tried_color_index] && tried_color_index == code.index(tried_color)
-        Board.add_key(:black, row_index)
-        remain_code.slice!(remain_code.index(tried_color), 1)
-      end
+      next unless tried_color == code[tried_color_index] && tried_color_index == code.index(tried_color)
+
+      # p "tried color #{tried_color} at #{tried_color_index} == #{code[tried_color_index]} at #{code.index(tried_color)}"
+      Board.add_key(:black, row_index, tried_color_index)
+      # p "so add black #{Board.current_key_row}"
+      #  p "so need to remove #{tried_color} in #{remain_code}"
+      remain_code.slice!(remain_code.index(tried_color), 1)
+      #  p "remained code #{remain_code}"
     end
     remain_code
   end
@@ -39,11 +44,19 @@ class ComputerPlayer
   def white_feedback(remain_code)
     row = Board.current_color_row
     row_index = Board.row_index
-    row.each do |tried_color|
-      if remain_code.include?(tried_color)
-        Board.add_key(:white, row_index)
-        remain_code.slice!(remain_code.index(tried_color), 1)
-      end
+    row.each_with_index do |tried_color, tried_color_index|
+      # p '---------------------------------------'
+      # p 'white feedback'
+      # p remain_code
+      next unless remain_code.include?(tried_color)
+
+      # p "remain code has tried color #{tried_color}"
+      # p Board.current_key_row
+      Board.add_key(:white, row_index, tried_color_index)
+      # p "Add white #{Board.current_key_row}"
+      remain_code.slice!(remain_code.index(tried_color), 1)
+      # p remain_code
+      Board.current_key_row.shuffle! if remain_code.empty?
     end
   end
 end

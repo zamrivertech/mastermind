@@ -17,9 +17,8 @@ class Game
   end
 
   # stop game session if human code player wins or lose
-  def self.win_or_lose(code) # rubocop:disable Metrics/MethodLength
+  def self.win_or_lose(code)
     stop = false
-    @computer_player.feedback(code)
     Output.display_board
     if Board.current_color_row == code
       puts 'You win'
@@ -38,7 +37,7 @@ class Game
     loop do
       Output.display_roles(@computer_player, @human_player)
       Output.display_board
-      p code
+      # p code
       @human_player.add_color
       break if Board.current_color_row_full? && win_or_lose(code)
 
