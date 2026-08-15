@@ -19,7 +19,7 @@ class Game
   def self.session_players
     session = Session.new(@computer_player, @human_player)
     if @computer_player.codemaker? && human_player.codebreaker?
-      session.human_codebreaker
+      session.human_breaker_computer_maker
     else
       puts 'New Logic Here!'
     end

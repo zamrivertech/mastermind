@@ -51,11 +51,12 @@ class Output
   def self.display_roles(computer, human)
     system 'clear'
     print "Computer: #{computer.role} | You: #{human.role}"
-    puts
   end
 
   # display valid colors, colors_keys and current row
-  def self.display_board
+  def self.display_human_breaker_computer_maker_ui(computer_player, human_player)
+    display_roles(computer_player, human_player)
+    puts
     display_valid_colors
     puts
     display_colors_keys

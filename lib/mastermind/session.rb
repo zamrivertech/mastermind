@@ -8,34 +8,36 @@ class Session
   end
 
   # stop game session if human code player wins or lose
-  def human_codebreaker_win_or_lose(code)
+  def human_breaker_computer_maker_winner(code)
     stop = false
-    Output.display_board
+    Output.display_human_breaker_computer_maker_ui(@computer_player, @human_player)
     if Board.current_color_row == code
-      puts 'You win'
+      puts 'Computer Lost, You Won!'.colorize(:green)
       stop = true
     elsif Board.last_color_row_full? && Board.last_color_row != code
-      puts 'You lost'
+      puts 'Computer Won, You Lost!'.colorize(:red)
       stop = true
     end
     stop
   end
 
-  # computer code maker create code
-  # display board so human code breaker tries to break code
+  # computer player creates code and
+  # human player tries to break it
   def human_breaker_computer_maker
     code = @computer_player.make_code
     loop do
-      Output.display_roles(@computer_player, @human_player)
-      Output.display_board
+      Output.display_human_breaker_computer_maker_ui(@computer_player, @human_player)
       # p code
       @human_player.add_color
-      break if Board.current_color_row_full? && human_codebreaker_win_or_lose(code)
+      break if Board.current_color_row_full? && human_breaker_computer_maker_winner(code)
 
       next unless Board.current_color_row_full? && (Input.confirm_row? == 'y')
 
       @computer_player.feedback(code)
       Board.next_row
     end
+  end
+
+  def human_maker_computer_breaker
   end
 end
