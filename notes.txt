@@ -1,2 +1,1 @@
-need to fix feedback
-problem is with the algorithm
+refactor game class

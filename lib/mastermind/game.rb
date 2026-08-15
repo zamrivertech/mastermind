@@ -16,35 +16,12 @@ class Game
     @computer_player = ComputerPlayer.new(human_player.role)
   end
 
-  # stop game session if human code player wins or lose
-  def self.win_or_lose(code)
-    stop = false
-    Output.display_board
-    if Board.current_color_row == code
-      puts 'You win'
-      stop = true
-    elsif Board.last_color_row_full? && Board.last_color_row != code
-      puts 'You lost'
-      stop = true
-    end
-    stop
-  end
-
-  # computer code maker create code
-  # display board so human code breaker tries to break code
-  def self.session
-    code = @computer_player.make_code
-    loop do
-      Output.display_roles(@computer_player, @human_player)
-      Output.display_board
-      # p code
-      @human_player.add_color
-      break if Board.current_color_row_full? && win_or_lose(code)
-
-      next unless Board.current_color_row_full? && (Input.confirm_row? == 'y')
-
-      @computer_player.feedback(code)
-      Board.next_row
+  def self.session_players
+    session = Session.new(@computer_player, @human_player)
+    if @computer_player.codemaker? && human_player.codebreaker?
+      session.human_codebreaker
+    else
+      puts 'New Logic Here!'
     end
   end
 end
