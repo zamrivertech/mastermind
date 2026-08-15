@@ -21,7 +21,7 @@ class Game
     if @computer_player.codemaker? && human_player.codebreaker?
       session.human_breaker_computer_maker
     else
-      puts 'New Logic Here!'
+      session.human_maker_computer_breaker
     end
   end
 end

@@ -39,5 +39,6 @@ class Session
   end
 
   def human_maker_computer_breaker
+    code = @human_player.make_code
   end
 end

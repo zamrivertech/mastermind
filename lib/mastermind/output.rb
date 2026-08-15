@@ -29,6 +29,13 @@ class Output
     end
   end
 
+  # display code
+  def self.display_code(code)
+    code.each_with_index do |color, index|
+      print "|#{color.nil? ? index + 1 : '●'.colorize(color)}|"
+    end
+  end
+
   # display valid colors that human code breaker can choose
   def self.display_valid_colors
     count = 0
