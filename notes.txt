@@ -1,10 +1,5 @@
-okay 
+Need to fix feedback
+problem might be in unshift and pop key
 
-i have not fully tested but key feedback and
-                            shuffle is genuinly
-
-Now you test and play the game without seeing the
-code using a strategy
-
-Then take a look at each file of code to seeing
-    what is refactorable
+then after fix, refactor game to allow
+human and computer to either be code maker or breaker
