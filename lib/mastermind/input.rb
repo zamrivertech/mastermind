@@ -18,4 +18,10 @@ class Input
     print 'Confirm colors? (y/n):'.colorize(:yellow)
     gets.chomp
   end
+
+  def self.feedback
+    puts
+    print 'How many black and white pegs?'
+    gets.chomp
+  end
 end

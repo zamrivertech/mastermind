@@ -22,4 +22,15 @@ class HumanPlayer
     end
     code
   end
+
+  def feedback
+    return unless codemaker?
+
+    return unless Board.current_color_row_full?
+
+    user_feedback = Input.feedback.split('')
+    # user_feedback[0].is?
+    Board.add_key_times(:black, user_feedback[0])
+    Board.add_key_times(:white, user_feedback[1])
+  end
 end

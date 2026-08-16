@@ -41,11 +41,9 @@ class Session
   def human_maker_computer_breaker
     code = @human_player.make_code
     loop do
-      Output.display_roles(@computer_player, @human_player)
-      puts
-      print 'Your secret code: '
-      Output.display_code(code)
-      puts
+      @computer_player.add_color
+      Output.display_human_maker_computer_breaker_ui(@computer_player, @human_player, code)
+      @human_player.feedback
       break
       # computer add color
       # if full, give feedback

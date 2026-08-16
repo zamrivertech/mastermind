@@ -59,4 +59,15 @@ class ComputerPlayer
       Board.current_key_row.shuffle! if remain_code.empty?
     end
   end
+
+  def add_color
+    count = 0
+    while true
+      break if count == 4
+
+      Board.current_color_row[count] = Peg.random_color
+      p Board.current_color_row
+      count += 1
+    end
+  end
 end

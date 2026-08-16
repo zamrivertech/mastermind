@@ -82,4 +82,13 @@ class Output
     puts
     current_row
   end
+
+  def self.display_human_maker_computer_breaker_ui(computer_player, human_player, code)
+    display_roles(computer_player, human_player)
+    puts
+    print 'Your secret code: '
+    display_code(code)
+    puts
+    display_colors_keys
+  end
 end
