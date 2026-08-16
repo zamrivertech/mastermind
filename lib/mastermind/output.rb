@@ -60,6 +60,18 @@ class Output
     print "Computer: #{computer.role} | You: #{human.role}"
   end
 
+  # display human code maker ui to create code
+  def self.create_code_ui(code)
+    system 'clear'
+    print 'Create a code for computer to break...'
+    puts
+    Output.display_valid_colors
+    puts
+    Output.display_code(code)
+    puts
+    puts
+  end
+
   # display valid colors, colors_keys and current row
   def self.display_human_breaker_computer_maker_ui(computer_player, human_player)
     display_roles(computer_player, human_player)
