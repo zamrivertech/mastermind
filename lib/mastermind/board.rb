@@ -23,18 +23,6 @@ class Board
     @key_board[row][index] = color
   end
 
-  # add a key by a number of times
-  def self.add_key_times(color, count)
-    count.to_i
-    while count.positive?
-      @key_board.current_key_row.unshift(color)
-      @key_board.current_key_row.pop
-      break if count.zero?
-
-      count -= 1
-    end
-  end
-
   # move to next row
   def self.next_row
     @row_index += 1
@@ -48,6 +36,18 @@ class Board
   # current acting feedback row
   def self.current_key_row
     @key_board[@row_index]
+  end
+
+  # add a key by a number of times
+  def self.add_key_times(color, count)
+    count.to_i
+    while count.positive?
+      current_key_row.unshift(color)
+      current_key_row.pop
+      break if count.zero?
+
+      count -= 1
+    end
   end
 
   # if current acting color row is full

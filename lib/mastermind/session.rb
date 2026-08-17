@@ -44,7 +44,9 @@ class Session
       @computer_player.add_color
       Output.display_human_maker_computer_breaker_ui(@computer_player, @human_player, code)
       @human_player.feedback
-      break
+      break if Board.last_color_row_full?
+
+      Board.next_row if Input.confirm_row? == 'y'
       # computer add color
       # if full, give feedback
       # computer check feedback

@@ -30,7 +30,7 @@ class HumanPlayer
 
     user_feedback = Input.feedback.split('')
     # user_feedback[0].is?
-    Board.add_key_times(:black, user_feedback[0])
-    Board.add_key_times(:white, user_feedback[1])
+    Board.add_key_times(:black, user_feedback[0].to_i)
+    Board.add_key_times(:white, user_feedback[1].to_i)
   end
 end

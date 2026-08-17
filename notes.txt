@@ -1,1 +1,6 @@
-refactor game class
+Add a limit to black and white pegs
+Implement computer strategy based on feedback
+and finally add a winner method
+
+and test both cases for final test
+and FINISHED BRO
