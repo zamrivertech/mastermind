@@ -62,7 +62,7 @@ class Output
 
   # display human code maker ui to create code
   def self.create_code_ui(code)
-    system 'clear'
+    # system 'clear'
     print 'Create a code for computer to break...'
     puts
     Output.display_valid_colors

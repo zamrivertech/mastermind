@@ -26,4 +26,9 @@ class Peg
   def self.random_color
     @colors.to_a.sample[1]
   end
+
+  # get only color values
+  def self.only_colors
+    @colors.to_a.flatten.filter { |element| !element.is_a?(String) }
+  end
 end

@@ -1,5 +1,19 @@
 Add a limit to black and white pegs
+not yet
+
 Implement computer strategy based on feedback
+
+create possible codes
+initial guess random 
+get feedback
+if no feedback cut array by index of guess
+if 1 black cut and move on
+if 1 white cut and move on
+if gretaer black or white than 1
+then here need minmax i think
+so smaller possible codes
+then repeat
+
 and finally add a winner method
 
 and test both cases for final test

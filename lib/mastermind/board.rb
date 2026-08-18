@@ -33,6 +33,10 @@ class Board
     @color_board[@row_index]
   end
 
+  def self.add_complete_colors(colors)
+    @color_board[@row_index] = colors
+  end
+
   # current acting feedback row
   def self.current_key_row
     @key_board[@row_index]
@@ -42,10 +46,10 @@ class Board
   def self.add_key_times(color, count)
     count.to_i
     while count.positive?
+      break if count.zero? || current_key_row.length > 4
+
       current_key_row.unshift(color)
       current_key_row.pop
-      break if count.zero?
-
       count -= 1
     end
   end
