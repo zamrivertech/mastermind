@@ -60,27 +60,7 @@ class ComputerPlayer
     end
   end
 
-  # feedback return
-  def feedback_check(actual_guess, candidate_guess) # rubocop:disable Metrics/MethodLength
-    current_feedback = [nil, nil, nil, nil]
-    remain_code = actual_guess.dup
-    candidate_guess.each_with_index do |tried_color, tried_color_index|
-      if tried_color == actual_guess[tried_color_index]
-        current_feedback.unshift(:black)
-        current_feedback.pop
-        remain_code.slice!(remain_code.index(tried_color).to_i)
-        next
-      end
-      next unless remain_code.include?(tried_color)
-
-      current_feedback.unshift(:white)
-      current_feedback.pop
-      remain_code.slice!(remain_code.index(tried_color).to_i)
-    end
-    current_feedback
-  end
-
-  def add_color(initial_guess)
-    Board.add_complete_colors(initial_guess)
+  def add_color(guess)
+    Board.add_complete_colors(guess)
   end
 end

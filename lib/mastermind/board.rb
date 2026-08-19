@@ -42,18 +42,6 @@ class Board
     @key_board[@row_index]
   end
 
-  # add a key by a number of times
-  def self.add_key_times(color, count)
-    count.to_i
-    while count.positive?
-      break if count.zero? || current_key_row.length > 4
-
-      current_key_row.unshift(color)
-      current_key_row.pop
-      count -= 1
-    end
-  end
-
   # if current acting color row is full
   def self.current_color_row_full?
     @color_board[@row_index].count(nil).zero?

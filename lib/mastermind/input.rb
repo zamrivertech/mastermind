@@ -21,7 +21,7 @@ class Input
 
   def self.feedback
     puts
-    print 'How many black and white pegs?'
+    print 'Enter your feedback?'
     gets.chomp
   end
 end

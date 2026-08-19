@@ -40,10 +40,20 @@ class Session
 
   def human_maker_computer_breaker
     code = @human_player.make_code
+    possible_colors = Peg.only_colors
     loop do
-      @computer_player.add_color
+      @computer_player.add_color([possible_colors.sample, possible_colors.sample, possible_colors.sample,
+                                  possible_colors.sample])
       Output.display_human_maker_computer_breaker_ui(@computer_player, @human_player, code)
       @human_player.feedback
+      feedback = Board.current_key_row
+      p possible_colors
+
+      # works well for repeated colors
+      possible_colors.filter! { |color| !Board.current_color_row.include?(color) } if feedback.count(nil) == 4
+
+      p possible_colors
+
       break if Board.last_color_row_full?
 
       Board.next_row if Input.confirm_row? == 'y'
