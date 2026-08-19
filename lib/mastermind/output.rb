@@ -22,10 +22,32 @@ class Output
     end
   end
 
+  # display color rows
+  def self.display_colors_with_keys_index
+    count = 0
+    Board.color_board.each_with_index do |color_row, color_row_index|
+      color_row.each_with_index do |color_peg, color_index|
+        print "|#{color_peg.nil? ? 'o' : '●'.colorize(color_peg)}|"
+        next unless color_index >= 3
+
+        display_key_row_with_index(color_row_index) unless color_row.include?(nil)
+        print " Row #{count += 1}"
+        puts
+      end
+    end
+  end
+
   # display key feedback rows
   def self.display_key_row(row)
     Board.key_board[row].each do |key|
       print "|#{key.nil? ? 'o' : '●'.colorize(key)}|"
+    end
+  end
+
+  # display key feedback rows with index
+  def self.display_key_row_with_index(row)
+    Board.key_board[row].each_with_index do |key, index|
+      print "|#{key.nil? ? index + 1 : '●'.colorize(key)}|"
     end
   end
 
@@ -89,6 +111,6 @@ class Output
     print 'Your secret code: '
     display_code(code)
     puts
-    display_colors_keys
+    display_colors_with_keys_index
   end
 end

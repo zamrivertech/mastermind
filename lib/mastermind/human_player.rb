@@ -23,16 +23,16 @@ class HumanPlayer
     code
   end
 
-  def feedback # rubocop:disable Metrics/AbcSize
+  def feedback
     return unless codemaker? && Board.current_color_row_full?
 
-    feedback = Input.feedback
-    black = feedback.slice(0..2).split
-    white = feedback.slice(3..5).split
+    count = 0
 
-    Board.add_key(Peg.color(black[0]), Board.row_index, black[1])
-    Board.add_key(Peg.color(black[0]), Board.row_index, black[2])
-    Board.add_key(Peg.color(white[0]), Board.row_index, white[1])
-    Board.add_key(Peg.color(white[0]), Board.row_index, white[2])
+    while count < 4
+      feedback = Input.feedback(count)
+      feedback = nil if feedback == '0'
+      Board.add_key(Peg.color(feedback), Board.row_index, count)
+      count += 1
+    end
   end
 end
