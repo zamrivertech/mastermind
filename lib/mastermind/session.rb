@@ -40,27 +40,36 @@ class Session
 
   def human_maker_computer_breaker
     code = @human_player.make_code
-    possible_colors = Peg.only_colors
+    # possible colors
+    possible_colors = Peg.only_colors.dup
     loop do
-      @computer_player.add_color([possible_colors.sample, possible_colors.sample, possible_colors.sample,
-                                  possible_colors.sample])
+      computer_guess = @computer_player.add_random_colors([possible_colors.sample,
+                                                           possible_colors.sample, possible_colors.sample, possible_colors.sample])
       Output.display_human_maker_computer_breaker_ui(@computer_player, @human_player, code)
       @human_player.feedback
       feedback = Board.current_key_row
-      p possible_colors
 
-      # works well for repeated colors
-      possible_colors.filter! { |color| !Board.current_color_row.include?(color) } if feedback.count(nil) == 4
+      feedback.each_with_index do |key, index|
+        impossible_color = computer_guess[index]
 
-      p possible_colors
+        if possible_colors.count == 1
+          next
+        elsif key.nil? && !possible_colors.index(impossible_color).nil?
+          possible_colors.delete_at(possible_colors.index(impossible_color))
+        end
+      end
 
       break if Board.last_color_row_full?
 
+      if code == computer_guess
+        puts 'You lost'
+        break
+      elsif Board.last_color_row && Board.last_color_row_full?
+        puts 'You won'
+        break
+      end
+
       Board.next_row if Input.confirm_row? == 'y'
-      # computer add color
-      # if full, give feedback
-      # computer check feedback
-      # no need to confirm row
     end
   end
 end

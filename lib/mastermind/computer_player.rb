@@ -60,7 +60,7 @@ class ComputerPlayer
     end
   end
 
-  def add_color(guess)
-    Board.add_complete_colors(guess)
+  def add_random_colors(colors)
+    Board.add_complete_colors(colors)
   end
 end

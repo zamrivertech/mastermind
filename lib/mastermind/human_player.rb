@@ -26,13 +26,10 @@ class HumanPlayer
   def feedback
     return unless codemaker? && Board.current_color_row_full?
 
-    count = 0
-
-    while count < 4
-      feedback = Input.feedback(count)
-      feedback = nil if feedback == '0'
-      Board.add_key(Peg.color(feedback), Board.row_index, count)
-      count += 1
+    feedback = Input.feedback.split('')
+    feedback.each_with_index do |key, index|
+      key = nil if key == '0'
+      Board.add_key(Peg.color(key), Board.row_index, index)
     end
   end
 end

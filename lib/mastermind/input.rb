@@ -19,9 +19,9 @@ class Input
     gets.chomp
   end
 
-  def self.feedback(index)
+  def self.feedback
     puts
-    print "Enter your feedback peg for currrent row at #{index + 1}?"
+    print 'Enter your feedback e.g (B00W):?'
     gets.chomp
   end
 end
